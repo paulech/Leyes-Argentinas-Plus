@@ -1,0 +1,1275 @@
+/* ==========================================================================
+   Leyes-Plus Argentina — Portal & Workspace CSS
+   ========================================================================== */
+
+/* Import Google Fonts for modern feel */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap');
+
+/* Global Workspace Active State */
+body.ilp-workspace-active {
+  overflow: hidden !important;
+  height: 100vh !important;
+  width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: var(--ilp-bg-0, #faf9f6) !important;
+}
+
+body.ilp-workspace-active > *:not(#ilp-workspace) {
+  display: none !important;
+}
+
+/* FAB button styled for top-tier aesthetics */
+#ilp-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2147483647;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5850ec, #4f46e5);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(88, 80, 236, 0.35);
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+#ilp-fab:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(88, 80, 236, 0.45);
+}
+#ilp-fab svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Workspace main container */
+#ilp-workspace {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483600;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ilp-bg-0);
+  color: var(--ilp-text-0);
+  font-family: var(--ilp-font-ui);
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+#ilp-workspace * {
+  box-sizing: border-box;
+}
+
+/* Top bar header - Premium glassmorphism style */
+#ilp-ws-header {
+  height: var(--ilp-header-h);
+  border-bottom: 1px solid var(--ilp-border);
+  background-color: var(--ilp-bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-shrink: 0;
+  box-shadow: var(--ilp-shadow-1);
+}
+
+.ilp-ws-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--ilp-text-0);
+  letter-spacing: -0.01em;
+}
+
+.ilp-ws-logo svg {
+  width: 26px;
+  height: 26px;
+  color: var(--ilp-accent);
+}
+
+.ilp-ws-logo span {
+  background: linear-gradient(to right, var(--ilp-text-0), var(--ilp-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ilp-ws-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Button & UI styling */
+.ilp-btn {
+  padding: 8px 16px;
+  border-radius: var(--ilp-radius-md);
+  border: 1px solid var(--ilp-border);
+  background-color: var(--ilp-bg-2);
+  color: var(--ilp-text-1);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ilp-btn:hover {
+  background-color: var(--ilp-bg-1);
+  color: var(--ilp-text-0);
+  border-color: var(--ilp-border-strong);
+}
+
+.ilp-btn-primary {
+  padding: 10px 18px;
+  border-radius: var(--ilp-radius-md);
+  border: none;
+  background-color: var(--ilp-accent);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 4px 12px rgba(88, 80, 236, 0.15);
+}
+
+.ilp-btn-primary:hover {
+  background-color: var(--ilp-accent-hover);
+  box-shadow: 0 6px 16px rgba(88, 80, 236, 0.25);
+  transform: translateY(-1px);
+}
+
+.ilp-btn-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--ilp-radius-md);
+  border: 1px solid var(--ilp-border);
+  background-color: var(--ilp-bg-2);
+  color: var(--ilp-text-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ilp-btn-icon:hover {
+  background-color: var(--ilp-bg-1);
+  color: var(--ilp-text-0);
+}
+
+.ilp-btn-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Workspace main layout split */
+#ilp-ws-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Left panel: search and results */
+#ilp-ws-sidebar {
+  width: 360px;
+  border-right: 1px solid var(--ilp-border);
+  background-color: var(--ilp-bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+#ilp-ws-search-form {
+  padding: 20px;
+  border-bottom: 1px solid var(--ilp-border);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#ilp-ws-search-form h3 {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ilp-text-0);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ilp-ws-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ilp-ws-field label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ilp-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ilp-ws-field input,
+.ilp-ws-field select {
+  padding: 8px 12px;
+  border-radius: var(--ilp-radius-sm);
+  border: 1px solid var(--ilp-border);
+  background-color: var(--ilp-bg-0);
+  color: var(--ilp-text-0);
+  font-family: inherit;
+  font-size: 0.88rem;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.ilp-ws-field input:focus,
+.ilp-ws-field select:focus {
+  border-color: var(--ilp-accent);
+  box-shadow: 0 0 0 3px var(--ilp-accent-soft);
+}
+
+#ilp-ws-results-count {
+  padding: 12px 20px 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ilp-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#ilp-ws-results {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ilp-ws-empty-state {
+  text-align: center;
+  padding: 40px 10px;
+  color: var(--ilp-text-2);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.ilp-ws-loading-state {
+  text-align: center;
+  padding: 40px 10px;
+  color: var(--ilp-text-1);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* Card item for search hit list */
+.ilp-ws-card {
+  background-color: var(--ilp-bg-0);
+  border: 1px solid var(--ilp-border);
+  border-radius: var(--ilp-radius-md);
+  padding: 12px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.ilp-ws-card:hover {
+  border-color: var(--ilp-accent);
+  transform: translateY(-1px);
+  background-color: var(--ilp-bg-2);
+  box-shadow: var(--ilp-shadow-2);
+}
+
+.ilp-ws-card.active {
+  border-color: var(--ilp-accent);
+  background-color: var(--ilp-accent-soft);
+}
+
+.ilp-ws-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ilp-ws-card-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--ilp-accent);
+  background-color: var(--ilp-accent-soft);
+  padding: 2px 8px;
+  border-radius: var(--ilp-radius-sm);
+  text-transform: uppercase;
+}
+
+.ilp-ws-card-date {
+  font-size: 0.72rem;
+  color: var(--ilp-text-2);
+}
+
+.ilp-ws-card-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ilp-text-0);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ilp-ws-card-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 4px;
+}
+
+/* ↗ New tab button positioned inside the card list items (icon button) */
+.ilp-ws-card-newtab-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ilp-text-2);
+  transition: all 0.2s ease;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.ilp-ws-card-newtab-btn:hover {
+  background-color: var(--ilp-accent-soft);
+  color: var(--ilp-accent);
+}
+
+.ilp-ws-card-newtab-btn svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* Right panel: law content reader */
+#ilp-ws-main {
+  flex: 1;
+  background-color: var(--ilp-bg-0);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reader welcome screen styled as bento style */
+#ilp-ws-reader-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 40px;
+  text-align: center;
+  overflow-y: auto;
+}
+
+.ilp-welcome-box {
+  max-width: 620px;
+  background-color: var(--ilp-bg-2);
+  border: 1px solid var(--ilp-border);
+  border-radius: var(--ilp-radius-lg);
+  padding: 40px;
+  box-shadow: var(--ilp-shadow-2);
+}
+
+.ilp-welcome-box h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+  background: linear-gradient(135deg, var(--ilp-text-0), var(--ilp-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ilp-welcome-box p {
+  color: var(--ilp-text-1);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+.ilp-welcome-chips {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  text-align: left;
+}
+
+.ilp-welcome-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  background-color: var(--ilp-bg-0);
+  border: 1px solid var(--ilp-border);
+  border-radius: var(--ilp-radius-md);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ilp-welcome-chip:hover {
+  border-color: var(--ilp-accent);
+  transform: translateY(-2px);
+  box-shadow: var(--ilp-shadow-2);
+}
+
+.ilp-welcome-chip strong {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ilp-text-0);
+}
+
+.ilp-welcome-chip span {
+  font-size: 0.75rem;
+  color: var(--ilp-text-2);
+}
+
+/* Reader active workspace view */
+#ilp-ws-reader {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+/* Reader Toolbar styling */
+#ilp-ws-reader-toolbar {
+  height: var(--ilp-toolbar-h);
+  border-bottom: 1px solid var(--ilp-border);
+  background-color: var(--ilp-bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+.ilp-ws-reader-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.ilp-ws-reader-meta #ilp-ws-reader-law-type {
+  font-size: 0.7rem;
+  color: #fff;
+  background-color: var(--ilp-accent);
+  padding: 2px 8px;
+  border-radius: var(--ilp-radius-sm);
+  text-transform: uppercase;
+}
+
+.ilp-ws-reader-meta #ilp-ws-reader-law-num {
+  color: var(--ilp-text-0);
+}
+
+.ilp-ws-reader-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Toggle Group for updated/original text version selectors */
+.ilp-ws-toggle-group {
+  display: flex;
+  border: 1px solid var(--ilp-border);
+  background-color: var(--ilp-bg-0);
+  border-radius: var(--ilp-radius-md);
+  padding: 2px;
+}
+
+.ilp-ws-toggle-group button {
+  padding: 5px 12px;
+  border-radius: var(--ilp-radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--ilp-text-1);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.ilp-ws-toggle-group button.active {
+  background-color: var(--ilp-bg-2);
+  color: var(--ilp-text-0);
+  box-shadow: var(--ilp-shadow-1);
+}
+
+/* Related regulations dropdowns container and items */
+.ilp-dropdown-container {
+  position: relative;
+}
+
+.ilp-dropdown-btn {
+  padding: 6px 12px;
+  border-radius: var(--ilp-radius-md);
+  border: 1px solid var(--ilp-border);
+  background-color: var(--ilp-bg-2);
+  color: var(--ilp-text-1);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.12s ease;
+}
+
+.ilp-dropdown-btn:hover {
+  background-color: var(--ilp-bg-1);
+}
+
+.ilp-dropdown-btn .badge {
+  background-color: var(--ilp-accent-soft);
+  color: var(--ilp-accent);
+  padding: 1px 6px;
+  border-radius: var(--ilp-radius-sm);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.ilp-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 6px;
+  width: 280px;
+  background-color: var(--ilp-bg-2);
+  border: 1px solid var(--ilp-border);
+  border-radius: var(--ilp-radius-md);
+  box-shadow: var(--ilp-shadow-3);
+  z-index: 100;
+  max-height: 240px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0;
+}
+
+.ilp-dropdown-menu.hidden {
+  display: none;
+}
+
+.ilp-dropdown-item {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.78rem;
+  color: var(--ilp-text-0);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.ilp-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.ilp-dropdown-item:hover {
+  background-color: var(--ilp-accent-soft);
+  color: var(--ilp-accent);
+}
+
+.ilp-dropdown-item strong {
+  font-weight: 600;
+}
+
+.ilp-dropdown-item span {
+  color: var(--ilp-text-2);
+  font-size: 0.72rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Reader Law text container scroll area */
+#ilp-ws-reader-content {
+  flex: 1;
+  overflow-y: auto;
+  background-color: var(--ilp-bg-2);
+  padding: 40px 60px 80px;
+  font-family: var(--ilp-font-serif);
+  line-height: 1.8;
+  color: var(--ilp-text-0);
+}
+
+#ilp-ws-reader-content h1 {
+  font-size: 1.6em;
+  font-weight: 700;
+  margin: 0 0 8px;
+  line-height: 1.35;
+  color: var(--ilp-text-0);
+}
+
+.ilp-law-meta-subtitle {
+  font-family: var(--ilp-font-ui);
+  font-size: 0.8em;
+  color: var(--ilp-text-2);
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--ilp-border);
+  padding-bottom: 12px;
+  display: flex;
+  gap: 16px;
+}
+
+.ilp-law-meta-subtitle span {
+  font-weight: 500;
+}
+
+#ilp-ws-reader-content h2 {
+  font-size: 1.15em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 1.8em 0 0.8em;
+  color: var(--ilp-text-0);
+}
+
+#ilp-ws-reader-content h3 {
+  font-size: 1em;
+  font-weight: 600;
+  font-style: italic;
+  margin: 1.4em 0 0.6em;
+}
+
+#ilp-ws-reader-content .ilp-art {
+  margin: 1.2em 0;
+  border-left: 3px solid var(--ilp-accent-soft);
+  padding-left: 14px;
+}
+
+#ilp-ws-reader-content p {
+  margin: 0.8em 0;
+  text-align: justify;
+}
+
+#ilp-ws-reader-content p .ilp-inline-subtitle {
+  display: block;
+  margin: 0.65em 0 0.15em;
+  font-family: var(--ilp-font-ui);
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  color: var(--ilp-text-1);
+}
+
+#ilp-ws-reader-content p .ilp-inline-structural {
+  display: block;
+  margin: 0.9em 0 0.35em;
+  text-align: center;
+  font-family: var(--ilp-font-ui);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ilp-text-0);
+}
+
+/* General scrollbars for sidebar and content */
+#ilp-workspace ::-webkit-scrollbar {
+  width: 8px;
+}
+#ilp-workspace ::-webkit-scrollbar-track {
+  background: transparent;
+}
+#ilp-workspace ::-webkit-scrollbar-thumb {
+  background: var(--ilp-border-strong);
+  border-radius: 99px;
+}
+
+/* ==========================================================================
+   WordPress Page Skins (Direct modification styling for infoleg.gob.ar)
+   ========================================================================== */
+
+/* Clean layout skin */
+body.ilp-skinned-page {
+  font-family: var(--ilp-font-ui);
+  background-color: var(--ilp-bg-0, #faf9f6);
+}
+
+/* Override WordPress layout styling */
+body.ilp-skinned-page #page {
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid #e8e6df !important;
+  border-radius: var(--ilp-radius-lg) !important;
+  padding: 24px !important;
+  margin-top: 24px !important;
+  margin-bottom: 24px !important;
+}
+
+body.ilp-skinned-page #header {
+  border-bottom: 1px solid #e8e6df !important;
+  padding-bottom: 16px !important;
+  margin-bottom: 24px !important;
+}
+
+body.ilp-skinned-page #site-title a {
+  color: var(--ilp-accent, #5850ec) !important;
+  font-weight: 700 !important;
+  font-family: var(--ilp-font-ui) !important;
+}
+
+body.ilp-skinned-page #secondary {
+  display: none !important; /* Hide old widgets bar */
+}
+
+body.ilp-skinned-page #content {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+/* Grid skin for "Códigos" (page_id=67) */
+.ilp-codes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.ilp-code-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ilp-radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.ilp-code-card:hover {
+  transform: translateY(-3px);
+  border-color: #5850ec;
+  box-shadow: 0 8px 16px rgba(88, 80, 236, 0.1);
+}
+
+.ilp-code-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: rgba(88, 80, 236, 0.08);
+  color: #5850ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.ilp-code-card-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1e293b;
+  line-height: 1.4;
+}
+
+.ilp-code-card-desc {
+  font-size: 0.78rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* Constitution page override (page_id=63) */
+.ilp-constitution-featured {
+  background: linear-gradient(135deg, rgba(88, 80, 236, 0.03), rgba(88, 80, 236, 0.07));
+  border: 1px dashed rgba(88, 80, 236, 0.3);
+  border-radius: var(--ilp-radius-lg);
+  padding: 32px;
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.ilp-constitution-icon {
+  font-size: 2.5rem;
+  color: #5850ec;
+}
+
+.ilp-constitution-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.ilp-constitution-desc {
+  font-size: 0.92rem;
+  color: #475569;
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+/* General WordPress list layouts cleanup */
+body.ilp-skinned-page #content p a,
+body.ilp-skinned-page #content ul li a {
+  color: #5850ec;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+body.ilp-skinned-page #content p a:hover,
+body.ilp-skinned-page #content ul li a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Home Page Portal Skin additions
+   ========================================================================== */
+
+body.ilp-skinned-page {
+  background: var(--ilp-bg-0, #faf9f6) !important;
+}
+
+/* Header branding styles */
+.ilp-portal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0 16px;
+  text-align: center;
+}
+
+.ilp-portal-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.ilp-portal-logo svg {
+  width: 44px;
+  height: 44px;
+  color: var(--ilp-accent, #5850ec);
+}
+
+.ilp-portal-logo span {
+  background: linear-gradient(135deg, #1e293b, var(--ilp-accent, #5850ec));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ilp-portal-tagline {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* Navbar / access menu styles */
+body.ilp-skinned-page #access {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02) !important;
+  border-radius: var(--ilp-radius-md) !important;
+  margin: 16px 0 32px !important;
+  padding: 4px 12px !important;
+}
+
+body.ilp-skinned-page #access ul.menu li a {
+  color: #475569 !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  padding: 10px 18px !important;
+  transition: all 0.15s ease !important;
+}
+
+body.ilp-skinned-page #access ul.menu li a:hover,
+body.ilp-skinned-page #access ul.menu li.current-menu-item > a {
+  color: var(--ilp-accent, #5850ec) !important;
+  background-color: var(--ilp-accent-soft) !important;
+  border-radius: var(--ilp-radius-sm) !important;
+}
+
+/* Home 3-column layout grid */
+body.ilp-skinned-page.home article.hentry {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 0.7fr;
+  gap: 28px;
+  margin-bottom: 48px;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Ensure proper float clearing to prevent layout overlaps */
+body.ilp-skinned-page.home #cleaner {
+  clear: both !important;
+  display: block !important;
+  height: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Hide cleaner divs inside grid to avoid creating empty grid rows */
+body.ilp-skinned-page.home article.hentry > #cleaner {
+  display: none !important;
+}
+
+/* Noticias / Search block */
+body.ilp-skinned-page.home #noticias {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ilp-radius-lg);
+  padding: 24px;
+  box-shadow: var(--ilp-shadow-1);
+}
+
+body.ilp-skinned-page.home #noticias h1 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+}
+
+.ilp-home-search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ilp-home-search-form .ilp-search-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ilp-home-search-form .ilp-search-field label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ilp-home-search-form .ilp-search-field label.disabled-label {
+  opacity: 0.4;
+}
+
+.ilp-home-search-form .ilp-search-field input,
+.ilp-home-search-form .ilp-search-field select {
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--ilp-radius-md);
+  font-size: 0.9rem;
+  outline: none;
+  background-color: #f8fafc;
+  color: #1e293b;
+  transition: all 0.15s ease;
+}
+
+.ilp-home-search-form .ilp-search-field input:focus,
+.ilp-home-search-form .ilp-search-field select:focus {
+  border-color: var(--ilp-accent, #5850ec);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px var(--ilp-accent-soft);
+}
+
+.ilp-home-search-form .ilp-search-field input:disabled {
+  opacity: 0.5;
+  background-color: #f1f5f9;
+  cursor: not-allowed;
+}
+
+.ilp-home-search-form .ilp-search-actions {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ilp-home-search-form .ilp-search-actions button {
+  width: 100%;
+}
+
+.ilp-search-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.ilp-search-links a {
+  color: var(--ilp-accent, #5850ec) !important;
+  font-weight: 600;
+}
+
+.ilp-search-links a:hover {
+  text-decoration: underline !important;
+}
+
+/* Novedades list styling */
+body.ilp-skinned-page.home #novedades {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ilp-radius-lg);
+  padding: 24px;
+  box-shadow: var(--ilp-shadow-1);
+}
+
+body.ilp-skinned-page.home #novedades h1 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+}
+
+body.ilp-skinned-page.home #novedades li {
+  list-style-type: none !important;
+  margin: 0 0 12px !important;
+  padding: 0 0 12px !important;
+  border-bottom: 1px dashed #f1f5f9;
+}
+
+body.ilp-skinned-page.home #novedades li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+body.ilp-skinned-page.home #novedades li a {
+  font-size: 0.84rem !important;
+  line-height: 1.45 !important;
+  color: #334155 !important;
+  font-weight: 500 !important;
+  display: block;
+  transition: color 0.12s ease;
+}
+
+body.ilp-skinned-page.home #novedades li a:hover {
+  color: var(--ilp-accent, #5850ec) !important;
+  text-decoration: none !important;
+}
+
+/* SAIJ Image column on the right */
+body.ilp-skinned-page.home #colImagenes {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ilp-radius-lg);
+  padding: 24px;
+  box-shadow: var(--ilp-shadow-1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+body.ilp-skinned-page.home #colImagenes img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.15s ease;
+}
+
+body.ilp-skinned-page.home #colImagenes img:hover {
+  transform: scale(1.02);
+}
+
+/* Supplementary widgets bottom section grid */
+body.ilp-skinned-page.home #supplementary {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 24px !important;
+  border-top: 1px solid #e2e8f0 !important;
+  padding-top: 36px !important;
+  margin-top: 36px !important;
+}
+
+body.ilp-skinned-page.home #supplementary .widget-area {
+  display: contents !important;
+}
+
+body.ilp-skinned-page.home #supplementary aside.widget {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ilp-radius-lg);
+  padding: 20px;
+  box-shadow: var(--ilp-shadow-1);
+  margin: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+body.ilp-skinned-page.home #supplementary aside.widget h3.widget-title {
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  color: var(--ilp-accent, #5850ec) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin: 0 0 14px !important;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 8px;
+}
+
+body.ilp-skinned-page.home #supplementary aside.widget ul.blogroll {
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+}
+
+body.ilp-skinned-page.home #supplementary aside.widget ul.blogroll li {
+  padding: 0 !important;
+  margin: 0 0 8px !important;
+  list-style: none !important;
+}
+
+body.ilp-skinned-page.home #supplementary aside.widget ul.blogroll li:last-child {
+  margin-bottom: 0;
+}
+
+body.ilp-skinned-page.home #supplementary aside.widget ul.blogroll li a {
+  font-size: 0.82rem !important;
+  color: #475569 !important;
+  font-weight: 500 !important;
+  display: block;
+  transition: all 0.12s ease;
+}
+
+body.ilp-skinned-page.home #supplementary aside.widget ul.blogroll li a:hover {
+  color: var(--ilp-accent, #5850ec) !important;
+  transform: translateX(4px);
+  text-decoration: none !important;
+}
+
+/* Footer modern dark layout */
+body.ilp-skinned-page #footer {
+  background-color: #0f172a !important;
+  border-radius: var(--ilp-radius-lg) !important;
+  padding: 32px 24px !important;
+  margin-top: 40px !important;
+  color: #94a3b8 !important;
+  font-size: 0.82rem !important;
+  line-height: 1.6 !important;
+}
+
+body.ilp-skinned-page #footer a {
+  color: #cbd5e1 !important;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: color 0.12s ease;
+}
+
+body.ilp-skinned-page #footer a:hover {
+  color: #ffffff !important;
+}
+
+body.ilp-skinned-page #footer ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 12px !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+body.ilp-skinned-page #footer ul:last-child {
+  margin-bottom: 0;
+}
+
+.ilp-back-to-top {
+  position: sticky;
+  bottom: 24px;
+  align-self: flex-end;
+  margin: 0 28px -12px 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--ilp-border);
+  background: var(--ilp-card, rgba(255, 255, 255, 0.72));
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  color: var(--ilp-text-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 32px var(--ilp-shadow);
+  z-index: 95;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ilp-back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.ilp-back-to-top:hover {
+  background: var(--ilp-accent);
+  color: #ffffff;
+  border-color: var(--ilp-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px var(--ilp-accent-soft);
+}
+
+.ilp-back-to-top:active {
+  transform: translateY(1px);
+}
+
+.ilp-back-to-top svg {
+  width: 18px;
+  height: 18px;
+}

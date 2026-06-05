@@ -1,0 +1,93 @@
+{
+  "manifest_version": 3,
+  "name": "Leyes-Plus Argentina",
+  "version": "0.1.3",
+  "description": "Dashboard autónomo premium para búsqueda, lectura y exportación de legislación consolidada de InfoLeg.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "*://*.infoleg.gob.ar/*",
+    "*://web2.cba.gov.ar/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js"
+  },
+  "action": {
+    "default_title": "Abrir Leyes-Plus Argentina"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://web2.cba.gov.ar/*"
+      ],
+      "js": [
+        "src/content/shared/encoding.js",
+        "src/content/shared/parser.js",
+        "src/content/shared/storage.js",
+        "src/content/shared/ui-shell.js",
+        "src/content/shared/highlight.js",
+        "src/content/cordoba-content.js"
+      ],
+      "css": [
+        "src/content/cordoba-content.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "*://www.infoleg.gob.ar/*",
+        "*://servicios.infoleg.gob.ar/infolegInternet/buscarNormas.do*",
+        "*://servicios.infoleg.gob.ar/infolegInternet/mostrarBusquedaNormas.do*"
+      ],
+      "js": [
+        "src/content/shared/encoding.js",
+        "src/content/shared/parser.js",
+        "src/content/shared/storage.js",
+        "src/content/shared/ui-shell.js",
+        "src/content/infoleg-portal.js"
+      ],
+      "css": [
+        "src/styles/tokens.css",
+        "src/styles/portal.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "*://servicios.infoleg.gob.ar/infolegInternet/verNorma.do*"
+      ],
+      "js": [
+        "src/content/shared/encoding.js",
+        "src/content/shared/parser.js",
+        "src/content/shared/storage.js",
+        "src/content/shared/ui-shell.js",
+        "src/content/infoleg-norma.js"
+      ],
+      "css": [
+        "src/styles/tokens.css",
+        "src/styles/portal.css",
+        "src/styles/reader.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "libs/jspdf.umd.min.js",
+        "libs/docx.umd.js"
+      ],
+      "matches": [
+        "*://web2.cba.gov.ar/*",
+        "*://*.infoleg.gob.ar/*"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Leyes-Plus Argentina — Design Tokens
+   ========================================================================== */
+
+:root {
+  --ilp-font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ilp-font-serif: 'Source Serif 4', 'Source Serif Pro', 'Merriweather', Georgia, serif;
+  --ilp-font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  --ilp-radius-sm: 6px;
+  --ilp-radius-md: 10px;
+  --ilp-radius-lg: 14px;
+  --ilp-radius-xl: 20px;
+  --ilp-radius-pill: 999px;
+
+  --ilp-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --ilp-shadow-2: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --ilp-shadow-3: 0 12px 32px rgba(0, 0, 0, 0.10);
+
+  --ilp-z-shell: 2147483600;
+  --ilp-z-toggle: 2147483647;
+
+  --ilp-header-h: 56px;
+  --ilp-toolbar-h: 48px;
+
+  --ilp-anim-fast: 120ms;
+  --ilp-anim: 200ms;
+  --ilp-anim-slow: 320ms;
+  --ilp-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Light theme (default) */
+.ilp-root[data-theme="light"] {
+  --ilp-bg-0: #faf9f6;
+  --ilp-bg-1: #f2f0eb;
+  --ilp-bg-2: #ffffff;
+  --ilp-text-0: #1c1917;
+  --ilp-text-1: #57534e;
+  --ilp-text-2: #8a857f;
+  --ilp-accent: #5850ec;
+  --ilp-accent-hover: #4f46e5;
+  --ilp-accent-soft: rgba(88, 80, 236, 0.10);
+  --ilp-border: rgba(28, 25, 23, 0.10);
+  --ilp-border-strong: rgba(28, 25, 23, 0.18);
+  --ilp-shadow: rgba(28, 25, 23, 0.06);
+  --ilp-card: rgba(255, 255, 255, 0.72);
+  --ilp-selection: rgba(88, 80, 236, 0.18);
+  --ilp-mark-bg: rgba(250, 204, 21, 0.55);
+  --ilp-mark-current: rgba(250, 160, 60, 0.85);
+  --ilp-bg-glass: rgba(255, 255, 255, 0.75);
+  --ilp-bg-glass-active: rgba(255, 255, 255, 0.9);
+}
+
+/* Sepia theme */
+.ilp-root[data-theme="sepia"] {
+  --ilp-bg-0: #f4ecd8;
+  --ilp-bg-1: #e9dec9;
+  --ilp-bg-2: #fdf6e3;
+  --ilp-text-0: #382e1e;
+  --ilp-text-1: #6b5b49;
+  --ilp-text-2: #8a7a66;
+  --ilp-accent: #b45309;
+  --ilp-accent-hover: #92400e;
+  --ilp-accent-soft: rgba(180, 83, 9, 0.10);
+  --ilp-border: rgba(67, 52, 34, 0.16);
+  --ilp-border-strong: rgba(67, 52, 34, 0.26);
+  --ilp-shadow: rgba(67, 52, 34, 0.10);
+  --ilp-card: rgba(244, 236, 216, 0.72);
+  --ilp-selection: rgba(180, 83, 9, 0.18);
+  --ilp-mark-bg: rgba(245, 158, 11, 0.40);
+  --ilp-mark-current: rgba(217, 119, 6, 0.75);
+  --ilp-bg-glass: rgba(244, 236, 216, 0.75);
+  --ilp-bg-glass-active: rgba(244, 236, 216, 0.9);
+}
+
+/* Dark theme */
+.ilp-root[data-theme="dark"] {
+  --ilp-bg-0: #0f0f11;
+  --ilp-bg-1: #16161a;
+  --ilp-bg-2: #1c1c20;
+  --ilp-text-0: #e8e8ec;
+  --ilp-text-1: #a8a8b3;
+  --ilp-text-2: #6c6c75;
+  --ilp-accent: #818cf8;
+  --ilp-accent-hover: #9ea5fc;
+  --ilp-accent-soft: rgba(129, 140, 248, 0.18);
+  --ilp-border: rgba(255, 255, 255, 0.08);
+  --ilp-border-strong: rgba(255, 255, 255, 0.16);
+  --ilp-shadow: rgba(0, 0, 0, 0.50);
+  --ilp-card: rgba(28, 28, 32, 0.72);
+  --ilp-selection: rgba(129, 140, 248, 0.28);
+  --ilp-mark-bg: rgba(250, 204, 21, 0.25);
+  --ilp-mark-current: rgba(250, 160, 60, 0.65);
+  --ilp-bg-glass: rgba(28, 28, 32, 0.75);
+  --ilp-bg-glass-active: rgba(28, 28, 32, 0.9);
+}
+
+/* Glow Transitions for premium theme switching */
+.ilp-root,
+.ilp-root header,
+.ilp-root aside,
+.ilp-root main,
+.ilp-root select,
+.ilp-root input,
+.ilp-root button,
+.ilp-root .law-article,
+.ilp-root #ilp-reader-content,
+.ilp-root #ilp-ws-reader-content,
+.ilp-root .ilp-toc-link,
+.ilp-root .cba-result-card,
+.ilp-root .ilp-results-card,
+.ilp-root .ilp-ws-card {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.3s ease, 
+              color 0.15s ease;
+}

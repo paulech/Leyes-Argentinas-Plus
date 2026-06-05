@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8" />
+  <title>Leyes-Plus Argentina · Opciones</title>
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body class="ilp-root" data-theme="light">
+  <main class="ilp-opt-container">
+    <header>
+      <h1>Leyes-Plus Argentina</h1>
+      <p>Preferencias y datos locales. Todo se guarda en tu navegador.</p>
+    </header>
+    <section>
+      <h2>Apariencia</h2>
+      <div class="ilp-opt-row">
+        <label>Tema predeterminado</label>
+        <div class="ilp-opt-themes" id="ilp-opt-themes">
+          <button data-theme="light">Claro</button>
+          <button data-theme="sepia">Sepia</button>
+          <button data-theme="dark">Oscuro</button>
+        </div>
+      </div>
+      <div class="ilp-opt-row">
+        <label for="ilp-opt-font">Tipografía del texto normativo</label>
+        <select id="ilp-opt-font">
+          <option value="serif">Serif (recomendado)</option>
+          <option value="sans">Sans (Inter)</option>
+        </select>
+      </div>
+      <div class="ilp-opt-row">
+        <label for="ilp-opt-size">Tamaño base (%)</label>
+        <input id="ilp-opt-size" type="number" min="70" max="160" step="5" />
+      </div>
+    </section>
+    <section>
+      <h2>Módulos</h2>
+      <div class="ilp-opt-row" style="display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <label for="ilp-opt-cordoba" style="font-weight: 600; font-size: 0.95rem; cursor: pointer;">Leyes de Córdoba</label>
+          <p class="ilp-opt-help" style="margin: 4px 0 0 0; font-size: 0.78rem; color: var(--ilp-text-2);">Habilita el rediseño y lector mejorado en el portal oficial web2.cba.gov.ar</p>
+        </div>
+        <input id="ilp-opt-cordoba" type="checkbox" style="width: 18px; height: 18px; cursor: pointer;" />
+      </div>
+    </section>
+    <section>
+      <h2>Datos</h2>
+      <p class="ilp-opt-help">Leyes-Plus Argentina no envía información a servidores externos. Todo se guarda en <code>chrome.storage.local</code>.</p>
+      <div class="ilp-opt-row">
+        <button id="ilp-opt-clear-history" class="ilp-opt-danger">Borrar historial de búsquedas</button>
+        <button id="ilp-opt-wipe" class="ilp-opt-danger">Borrar todos los datos</button>
+      </div>
+    </section>
+    <section>
+      <h2>Acerca de</h2>
+      <p class="ilp-opt-help">
+        <strong>Leyes-Plus Argentina v0.1.0</strong> · MVP1 (reader de ficha).<br />
+        Capa de UI sobre el sitio oficial del Ministerio de Justicia
+        (<a href="https://www.infoleg.gob.ar" target="_blank">infoleg.gob.ar</a>).
+        Sin scraping, sin tracking.
+      </p>
+    </section>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>

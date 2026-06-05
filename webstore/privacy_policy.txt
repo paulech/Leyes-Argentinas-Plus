@@ -1,0 +1,28 @@
+POLÍTICA DE PRIVACIDAD — NORMATIVA NACIONAL PLUS
+
+Última actualización: 2026-06-04
+
+Normativa Nacional Plus ("la Extensión") es una extensión para navegadores web desarrollada como una capa de usabilidad sobre los sitios oficiales de legislación. Valoramos profundamente la privacidad de los usuarios y nos comprometemos a proteger los datos personales.
+
+1. RECOPILACIÓN Y USO DE LA INFORMACIÓN
+La Extensión NO recopila, transmite, almacena ni comparte ningún tipo de información personal, datos identificativos o historial de navegación con servidores externos ni terceros. 
+
+Toda la actividad realizada dentro de la Extensión se procesa localmente en el dispositivo del usuario:
+- El historial de búsquedas y las leyes guardadas en favoritos se almacenan exclusivamente en el almacenamiento local del navegador (`chrome.storage.local`).
+- Los textos normativos se descargan directamente en memoria desde los servidores oficiales del Ministerio de Justicia (infoleg.gob.ar) y el portal de Córdoba (web2.cba.gov.ar) en tiempo real, sin intermediación de servidores de terceros.
+- Las exportaciones a PDF y Word se generan localmente en el hilo del navegador (Service Worker) mediante código JavaScript y librerías locales embebidas.
+
+2. PERMISOS REQUERIDOS EN EL NAVEGADOR
+Para su correcto funcionamiento, la Extensión solicita los siguientes permisos estrictamente necesarios:
+- `storage`: Permite guardar y recuperar las preferencias visuales (tema, tamaño de letra, tipografía), el historial local de búsquedas y los favoritos del usuario.
+- `clipboardWrite`: Permite al usuario copiar al portapapeles citas oficiales o textos de artículos mediante los botones dispuestos en la interfaz.
+- Permisos de Host (*.infoleg.gob.ar, web2.cba.gov.ar): Requeridos para inyectar los estilos de visualización avanzados y permitir la consulta asíncrona de normativas oficiales saltando restricciones CORS sin requerir un servidor central proxy.
+
+3. COOKIES Y TELEMETRÍA
+La Extensión no utiliza cookies de seguimiento, herramientas de análisis de terceros (como Google Analytics) ni telemetría. La navegación es 100% anónima.
+
+4. CAMBIOS A ESTA POLÍTICA
+Esta política de privacidad podría actualizarse en el futuro para reflejar cambios funcionales menores de la Extensión. Cualquier cambio se publicará directamente en la tienda oficial Chrome Web Store.
+
+5. CONTACTO
+Para cualquier consulta o sugerencia respecto a la privacidad de esta herramienta, el usuario puede abrir una incidencia en el repositorio de desarrollo correspondiente.

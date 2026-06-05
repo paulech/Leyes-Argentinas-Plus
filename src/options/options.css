@@ -1,0 +1,104 @@
+:root {
+  --ilp-bg-0: #faf9f6;
+  --ilp-bg-1: #f2f0eb;
+  --ilp-bg-2: #ffffff;
+  --ilp-text-0: #1c1917;
+  --ilp-text-1: #57534e;
+  --ilp-text-2: #8a857f;
+  --ilp-accent: #5850ec;
+  --ilp-border: rgba(28, 25, 23, 0.10);
+}
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--ilp-bg-0);
+  color: var(--ilp-text-0);
+  min-height: 100vh;
+}
+.ilp-opt-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+header h1 {
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  margin: 0 0 6px;
+}
+header p { color: var(--ilp-text-1); margin: 0 0 28px; }
+section {
+  background: var(--ilp-bg-2);
+  border: 1px solid var(--ilp-border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+section h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 14px;
+  color: var(--ilp-text-0);
+}
+.ilp-opt-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.ilp-opt-row label {
+  min-width: 220px;
+  font-size: 0.85rem;
+  color: var(--ilp-text-1);
+}
+.ilp-opt-row input, .ilp-opt-row select {
+  flex: 1;
+  min-width: 160px;
+  padding: 8px 12px;
+  background: var(--ilp-bg-0);
+  border: 1px solid var(--ilp-border);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--ilp-text-0);
+}
+.ilp-opt-themes { display: flex; gap: 6px; }
+.ilp-opt-themes button {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--ilp-bg-0);
+  border: 1px solid var(--ilp-border);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.82rem;
+  color: var(--ilp-text-0);
+}
+.ilp-opt-themes button.active {
+  background: var(--ilp-accent);
+  color: #fff;
+  border-color: var(--ilp-accent);
+}
+.ilp-opt-help {
+  font-size: 0.82rem;
+  color: var(--ilp-text-1);
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+.ilp-opt-danger {
+  padding: 7px 12px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid var(--ilp-border);
+  color: #b91c1c;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.82rem;
+}
+.ilp-opt-danger:hover { background: rgba(185, 28, 28, 0.06); }
+code {
+  background: var(--ilp-bg-0);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+}

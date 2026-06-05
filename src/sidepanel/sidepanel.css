@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Leyes-Plus Argentina — Side Panel
+   ========================================================================== */
+
+:root {
+  --ilp-bg-0: #faf9f6;
+  --ilp-bg-1: #f2f0eb;
+  --ilp-bg-2: #ffffff;
+  --ilp-text-0: #1c1917;
+  --ilp-text-1: #57534e;
+  --ilp-text-2: #8a857f;
+  --ilp-accent: #5850ec;
+  --ilp-accent-soft: rgba(88, 80, 236, 0.10);
+  --ilp-border: rgba(28, 25, 23, 0.10);
+  --ilp-radius-md: 10px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--ilp-bg-0);
+  color: var(--ilp-text-0);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.ilp-sp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--ilp-border);
+}
+.ilp-sp-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.ilp-sp-header h1::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: var(--ilp-accent);
+  border-radius: 50%;
+}
+.ilp-theme-dots { display: flex; gap: 6px; padding: 4px; background: var(--ilp-bg-1); border-radius: 999px; }
+.ilp-theme-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--ilp-border);
+  cursor: pointer;
+}
+.ilp-theme-dot[data-theme="light"] { background: #faf9f6; }
+.ilp-theme-dot[data-theme="sepia"] { background: #b45309; }
+.ilp-theme-dot[data-theme="dark"]  { background: #16161a; }
+.ilp-theme-dot.active { box-shadow: 0 0 0 2px var(--ilp-accent); }
+
+.ilp-sp-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--ilp-border);
+}
+.ilp-sp-tab {
+  flex: 1;
+  padding: 10px 8px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ilp-text-1);
+  cursor: pointer;
+}
+.ilp-sp-tab:hover { color: var(--ilp-text-0); }
+.ilp-sp-tab.active { color: var(--ilp-accent); border-bottom-color: var(--ilp-accent); }
+
+.ilp-sp-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+.ilp-sp-empty {
+  font-size: 0.82rem;
+  color: var(--ilp-text-1);
+  text-align: center;
+  line-height: 1.5;
+  padding: 32px 14px;
+  background: var(--ilp-bg-1);
+  border: 1px dashed var(--ilp-border);
+  border-radius: var(--ilp-radius-md);
+  margin: 0;
+}
